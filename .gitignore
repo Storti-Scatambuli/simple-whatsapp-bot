@@ -128,3 +128,11 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+#Google API and whatsapp auth
+token.json
+credentials.json
+whatsapp_auth/
+
+#whatsapp web cache
+.wwebjs_cache/
