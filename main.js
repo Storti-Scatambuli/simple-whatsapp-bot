@@ -20,28 +20,7 @@ client.on('qr', async qr => {
 });
 
 client.on('message_create', async message => {
-	if (message.hasMedia) {
-		console.log('Midia identificada')
-		const mediafile = await message.downloadMedia();
-		console.log(
-		  mediafile.mimetype,
-		  mediafile.filename,
-		  mediafile.data.length
-		);
-
-		fs.writeFile(
-			"./upload/" + mediafile.filename,
-			mediafile.data,
-			"base64",
-			function (err) {
-			  if (err) {
-				console.log(err);
-			  }
-			}
-		  );
-	}
-
-	else if (message.body.slice(0, 1) == '!') {
+	if (message.body.slice(0, 1) == '!') {
 		number = '000' + message.body.slice(1);
 		sheets.getPerfume(number.slice(-3)).then((perfume) => {
 			client.sendMessage(message.from, perfume)
